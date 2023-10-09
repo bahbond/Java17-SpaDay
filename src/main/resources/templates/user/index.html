@@ -2,11 +2,17 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8"/>
-    <title></title>
+    <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
+
+    <title>Welcome</title>
 </head>
 <body>
-<h1 th:text ="Welcome to the spa ${User.userName}">
+<h3 th:text = "'Welcome ' + ${user.username} + '!'"></h3>
+<a th:href="@{/}">Select your spa services here!</a>
 
-</h1>
+<h2>Users</h2>
+<th:block th:each="someUser : ${users}">
+   <a th:href="@{'/user/details/' + ${someUser.id}}"> <p th:text="${someUser.username}"></p></a>
+</th:block>
 </body>
 </html>
